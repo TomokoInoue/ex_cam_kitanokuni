@@ -100,6 +100,8 @@ body {
 	@include smartphone {
 		min-width: inherit;
 		-webkit-text-size-adjust: 100%;
+		background: url(#{$imgPath}bg_overall_sp.jpg) no-repeat 50% 0;
+		background-size: 100% auto;
 	}
 }
 
@@ -134,12 +136,21 @@ a:active { // クリックしてから離されるまでの状態
 				top: 23px;
 				right: -13px;
 			}
+			@include smartphone {
+				width: percentage(604 / 580);
+				margin-left: percentage(-12 / 580);
+				padding-top: percentage(30 / 580);
+			}
 		}
 		.mv_copy {
 			@include desktop {
 				position: absolute;
 				top: 296px;
 				@include backgroundFig(774px, 153px, "mv_copy.png");
+			}
+			@include smartphone {
+				margin: percentage(18 / 580) 0 percentage(24 / 580);
+				@include backgroundFigSP(percentage(580 / 580), percentage(158 / 580), "mv_copy_sp.png");
 			}
 		}
 		.mv_thumb {
@@ -148,22 +159,50 @@ a:active { // クリックしてから離されるまでの状態
 				top: 36px;
 				@include backgroundFig(322px, 240px, "mv_thumb.png");
 			}
+			@include smartphone {
+				margin-bottom: percentage(48 / 580);
+				@include backgroundFigSP(percentage(580 / 580), percentage(325 / 580), "mv_thumb_sp.png");
+			}
 		}
 		.mv_item {
+			position: absolute;
 			@include desktop {
-				position: absolute;
 				top: 297px;
 				right: 0;
 				@include backgroundFig(164px, 223px, "mv_item.png");
+			}
+			@include smartphone {
+				top: 0;
+				right: 0;
+				margin-top: percentage(561 / 580);
+				margin-right: percentage(11 / 580);
+				@include backgroundFigSP(percentage(182 / 580), percentage(241 / 580), "mv_item_sp.png");
 			}
 		}
 		.mv_sns {
 			display: flex;
 			justify-content: space-between;
-			position: relative;
+			position: absolute;
+			right: 0;
+			a {
+				display: block;
+			}
 			@include desktop {
 				width: 110px;
-				float: right;
+			}
+			@include smartphone {
+				width: percentage(160 / 580);
+				top: 0;
+				margin-top: percentage(20 / 580);
+			}
+			li {
+				@include smartphone {
+					width: percentage(70 / 160);
+					a > img {
+						width: 100%;
+						height: auto;
+					}
+				}
 			}
 		}
 	}
@@ -171,7 +210,6 @@ a:active { // クリックしてから離されるまでの状態
 
 // リード
 .lead_area {
-	clear: right;
 	@include desktop {
 		margin: 445px 0 50px;
 		background: url(#{$imgPath}lead_bg.png);
