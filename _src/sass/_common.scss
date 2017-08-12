@@ -160,7 +160,7 @@ a:active { // クリックしてから離されるまでの状態
 				@include backgroundFig(322px, 240px, "mv_thumb.png");
 			}
 			@include smartphone {
-				margin-bottom: percentage(48 / 580);
+				margin-bottom: percentage(50 / 580);
 				@include backgroundFigSP(percentage(580 / 580), percentage(325 / 580), "mv_thumb_sp.png");
 			}
 		}
@@ -210,15 +210,21 @@ a:active { // クリックしてから離されるまでの状態
 
 // リード
 .lead_area {
+	background: url(#{$imgPath}lead_bg.png);
 	@include desktop {
 		margin: 445px 0 50px;
-		background: url(#{$imgPath}lead_bg.png);
+	}
+	@include smartphone {
+		margin-bottom: percentage(60 / 580);
 	}
 	.lead_contents {
 		@extend %ext_base_block;
 		@include clearfix;
 		@include desktop {
 			padding: 9px 0;
+		}
+		@include smartphone {
+			padding: percentage(20 / 580) 0 percentage(27 / 580);
 		}
 	}
 	.lead_txt {
@@ -229,10 +235,22 @@ a:active { // クリックしてから離されるまでの状態
 			line-height: 2.33em;
 			padding-top: 48px;
 		}
+		@include smartphone {
+			margin-bottom: percentage(20 / 580);
+			font-size: 4.0625vw;
+			line-height: 1.69em;
+		}
 	}
 	.lead_img {
 		@include desktop {
 			float: left;
+		}
+		@include smartphone {
+			width: 100%;
+			img {
+				width: 100%;
+				height: auto;
+			}
 		}
 	}
 	&:before {
