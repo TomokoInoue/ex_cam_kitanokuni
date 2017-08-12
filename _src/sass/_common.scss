@@ -358,32 +358,43 @@ a:active { // クリックしてから離されるまでの状態
 	}
 }
 
+// フッターSNS
+.footer_sns {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	@include desktop {
+		width: 170px;
+		margin-bottom: 80px;
+	}
+}
+
+// ページトップボタン
+.top_page_btn {
+	position: fixed;
+	@include desktop {
+		right: 103px;
+		bottom: 96px;
+	}
+}
+
 
 /** ---------------------
  * フッターCSS
  * ------------------- */
 footer {
-	background-color: #fff;
-	.footer_contens {
-		@extend %ext_base_block;
+	background-color: #857a26;
+	.copyright {
+		color: #fff;
+		text-align: center;
 		@include desktop {
-			margin: 0 auto;
-			padding: 20px 0;
+			padding: 21px 0;
+			font-family: "Quicksand", "游ゴシック", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+			font-size: 18px;
 		}
 		@include smartphone {
-			padding: 20px 0;
-		}
-		.copyright {
-			text-align: center;
-			@include desktop {
-				font-family: "Quicksand", "游ゴシック", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
-				font-size: 10px;
-				line-height: 1em;
-			}
-			@include smartphone {
-				width: 100%;
-				font-size: 8px;
-			}
+			width: 100%;
+			font-size: 8px;
 		}
 	}
 }
