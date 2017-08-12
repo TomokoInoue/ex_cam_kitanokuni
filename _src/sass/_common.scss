@@ -84,9 +84,8 @@ body {
 	background-color: $baseBkgColor;
 	color: $base-font-color;
 	font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
-	& > img {
-		// 計測タグが生成するimgタグの影響で余白が出てしまうため
-		position: absolute;
+	img {
+		vertical-align: bottom;
 		@include smartphone {
 			max-width: 100%;
 	        height: auto;
@@ -174,9 +173,8 @@ a:active { // クリックしてから離されるまでの状態
 .lead_area {
 	clear: right;
 	@include desktop {
-		@include clearfix;
-		margin-top: 445px;
-		background: url(#{$imgPath}lead_bg.gif);
+		margin: 445px 0 50px;
+		background: url(#{$imgPath}lead_bg.png);
 	}
 	.lead_contents {
 		@extend %ext_base_block;
@@ -203,13 +201,121 @@ a:active { // クリックしてから離されるまでの状態
 		content: "";
 		display: block;
 		height: 15px;
-		background: url(#{$imgPath}lead_bg_top.gif) repeat-x;
+		background: url(#{$imgPath}lead_bg_top.png) repeat-x;
 	}
 	&:after {
 		content: "";
 		display: block;
 		height: 15px;
-		background: url(#{$imgPath}lead_bg_bottom.gif) repeat-x;
+		background: url(#{$imgPath}lead_bg_bottom.png) repeat-x;
+	}
+}
+
+// 応募方法
+.steps_area {
+	@extend %ext_base_block;
+	.steps_ttl {
+		@include desktop {
+			margin: 0 auto 20px;
+			@include backgroundFig(200px, 50px, "step1_ttl.png");
+		}
+	}
+	// ステップエリア共通
+	.steps_box {
+		background: url(#{$imgPath}steps_bg.png);
+		@include desktop {
+			padding: 10px 0;
+			border: 1px solid #fff;
+		}
+	}
+	.steps_inner {
+		@include desktop {
+			width: 940px;
+			margin: 0 auto;
+			border: 2px solid #857a26;
+		}
+	}
+	.steps_num {
+		background-color: #857a26;
+		text-align: center;
+		@include desktop {
+			padding: 16px 0 13px;
+		}
+	}
+	.steps_desc {
+		text-align: center;
+		@include desktop {
+			font-size: 18px;
+			line-height: 1.66em;
+		}
+	}
+	// ステップ1のみのCSS
+	.step1_wrap:after {
+			content: "";
+			display: block;
+			height: 31px;
+			margin-bottom: 14px;
+			background: url(#{$imgPath}steps_next.png) no-repeat 50% 0;
+	}
+	.step1 {
+		@include desktop {
+			margin-bottom: 18px;
+		}
+		.steps_desc {
+			@include desktop {
+				margin: 20px 0;
+			}
+		}
+		.steps_follow {
+			margin: 0 auto;
+			@include desktop {
+				margin-bottom: 30px;
+				@include backgroundFig(330px, 58px, "steps_follow_btn.png");
+				& > a {
+					display: block;
+					height: 58px;
+				}
+			}
+		}
+	}
+	// ステップ2のみのCSS
+	.step2 {
+		.steps_desc {
+			@include desktop {
+				margin: 40px 0 20px;
+			}
+		}
+		.steps_tweet {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin: 0 auto;
+			@include desktop {
+				width: 836px;
+			}
+			li {
+				@include desktop {
+					margin-bottom: 50px;
+				}
+				.steps_tweet_thumb {
+					@include desktop {
+						margin-bottom: 16px;
+					}
+				}
+				.steps_tweet_btn {
+					text-align: center;
+					a {
+						display: block;
+					}
+				}
+				&:nth-child(5),
+				&:last-child {
+					@include desktop {
+						margin-bottom: 54px;
+					}
+				}
+			}
+		}
 	}
 }
 
