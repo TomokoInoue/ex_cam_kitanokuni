@@ -83,7 +83,7 @@
 body {
 	background-color: $baseBkgColor;
 	color: $base-font-color;
-	font-family: "游ゴシック", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+	font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 	& > img {
 		// 計測タグが生成するimgタグの影響で余白が出てしまうため
 		position: absolute;
@@ -95,6 +95,8 @@ body {
 	@include desktop {
 		font-size: $base-font-size;
 		min-width: $contentBaseWidgth_PC;
+		background: url(#{$imgPath}bg_overall.jpg) no-repeat 50% 0;
+		background-size: 100% auto;
 	}
 	@include smartphone {
 		min-width: inherit;
@@ -113,38 +115,101 @@ a:active { // クリックしてから離されるまでの状態
 
 
 /** ---------------------
- * ヘッダーCSS
- * ------------------- */
-header {
-	background-color: #fff;
-	.header_contentes {
-		@extend %ext_base_block;
-		@include desktop {
-			margin: 0 auto;
-			padding: 20px 0;
-		}
-		@include smartphone {
-			padding: percentage(30 / 640) 0;
-			background-color: #fff;
-		}
-	}
-}
-
-
-/** ---------------------
  * コンテンツエリアCSS
  * ------------------- */
+// メインビジュアル
 .mv_area {
 	.mv_contents {
 		@extend %ext_base_block;
 		@include desktop {
-			height: 1300px; // 仮
+			position: relative;
 			margin: 0 auto;
+			padding-top: 23px;
 		}
 		@include smartphone {
-			height: 2000px;
 			padding-top: 20px;
 		}
+		h1 {
+			@include desktop {
+				position: absolute;
+				top: 23px;
+				right: -13px;
+			}
+		}
+		.mv_copy {
+			@include desktop {
+				position: absolute;
+				top: 296px;
+				@include backgroundFig(774px, 153px, "mv_copy.png");
+			}
+		}
+		.mv_thumb {
+			@include desktop {
+				position: absolute;
+				top: 36px;
+				@include backgroundFig(322px, 240px, "mv_thumb.png");
+			}
+		}
+		.mv_item {
+			@include desktop {
+				position: absolute;
+				top: 297px;
+				right: 0;
+				@include backgroundFig(164px, 223px, "mv_item.png");
+			}
+		}
+		.mv_sns {
+			display: flex;
+			justify-content: space-between;
+			position: relative;
+			@include desktop {
+				width: 110px;
+				float: right;
+			}
+		}
+	}
+}
+
+// リード
+.lead_area {
+	clear: right;
+	@include desktop {
+		@include clearfix;
+		margin-top: 445px;
+		background: url(#{$imgPath}lead_bg.gif);
+	}
+	.lead_contents {
+		@extend %ext_base_block;
+		@include clearfix;
+		@include desktop {
+			padding: 9px 0;
+		}
+	}
+	.lead_txt {
+		@include desktop {
+			float: right;
+			width: 556px;
+			font-size: 18px;
+			line-height: 2.33em;
+			padding-top: 48px;
+		}
+	}
+	.lead_img {
+		@include desktop {
+			float: left;
+		}
+	}
+	&:before {
+		content: "";
+		display: block;
+		height: 15px;
+		background: url(#{$imgPath}lead_bg_top.gif) repeat-x;
+	}
+	&:after {
+		content: "";
+		display: block;
+		height: 15px;
+		background: url(#{$imgPath}lead_bg_bottom.gif) repeat-x;
 	}
 }
 
