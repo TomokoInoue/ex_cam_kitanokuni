@@ -328,8 +328,32 @@ a:active { // クリックしてから離されるまでの状態
 	.steps_more_btn {
 		margin: 0 auto;
 		@include desktop {
-			margin-top: 30px;
+			margin-top: 18px;
 			@include backgroundFig(686px, 128px, "steps_more_btn.png");
+		}
+	}
+}
+
+// 応募要項
+.guideline_area {
+	@include desktop {
+		width: 880px;
+		margin: 0 auto 65px;
+	}
+	.guideline_ttl {
+		@include desktop {
+			margin: 0 auto 30px;
+			@include backgroundFig(200px, 50px, "guideline_ttl.png");
+		}
+	}
+	.guideline_contents {
+		@include desktop {
+			line-height: 1.71em;
+		}
+		.guideline_txt {
+			@include desktop {
+				margin-bottom: 26px;
+			}
 		}
 	}
 }
