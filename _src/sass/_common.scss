@@ -214,12 +214,16 @@ a:active { // クリックしてから離されるまでの状態
 // 応募方法
 .steps_area {
 	@extend %ext_base_block;
+	@include desktop {
+		margin-bottom: 81px;
+	}
 	.steps_ttl {
 		@include desktop {
 			margin: 0 auto 20px;
 			@include backgroundFig(200px, 50px, "step1_ttl.png");
 		}
 	}
+
 	// ステップエリア共通
 	.steps_box {
 		background: url(#{$imgPath}steps_bg.png);
@@ -249,6 +253,7 @@ a:active { // クリックしてから離されるまでの状態
 			line-height: 1.66em;
 		}
 	}
+
 	// ステップ1のみのCSS
 	.step1_wrap:after {
 			content: "";
@@ -278,6 +283,7 @@ a:active { // クリックしてから離されるまでの状態
 			}
 		}
 	}
+
 	// ステップ2のみのCSS
 	.step2 {
 		.steps_desc {
@@ -315,6 +321,15 @@ a:active { // クリックしてから離されるまでの状態
 					}
 				}
 			}
+		}
+	}
+
+	// 詳細ボタンのCSS
+	.steps_more_btn {
+		margin: 0 auto;
+		@include desktop {
+			margin-top: 30px;
+			@include backgroundFig(686px, 128px, "steps_more_btn.png");
 		}
 	}
 }
