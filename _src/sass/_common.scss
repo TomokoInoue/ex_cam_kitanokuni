@@ -494,7 +494,7 @@ a:active { // クリックしてから離されるまでの状態
 	}
 	@include smartphone {
 		width: percentage(580 / 640);
-		margin: 0 auto;
+		margin: 0 auto percentage(93 / 640);
 	}
 	.guideline_ttl {
 		@include desktop {
@@ -534,6 +534,17 @@ a:active { // クリックしてから離されるまでの状態
 		width: 170px;
 		margin-bottom: 80px;
 	}
+	@include smartphone {
+		width: percentage(240 / 640);
+		margin-bottom: percentage(80 / 640);
+		li {
+			width: percentage(100 / 240);
+			a > img {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
 }
 
 // ページトップボタン
@@ -545,6 +556,10 @@ a:active { // クリックしてから離されるまでの状態
 	@include desktop {
 		right: 103px;
 		bottom: 96px;
+	}
+	@include smartphone {
+		right: 22px;
+		bottom: 145px;
 	}
 }
 
@@ -563,8 +578,8 @@ footer {
 			font-size: 18px;
 		}
 		@include smartphone {
-			width: 100%;
-			font-size: 8px;
+			padding: percentage(30 / 640) 0;
+			font-size: 3.4375vw;
 		}
 	}
 }
