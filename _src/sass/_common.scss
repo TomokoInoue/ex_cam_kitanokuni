@@ -64,6 +64,12 @@
 	}
 }
 
+// ぶら下がりインデント
+.hanging_indent > li {
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
 // 文字を小さくする ※Chromeで10px以下にならないため、transformで制御する
 .subsmall {
 	display: inline-block;
@@ -215,7 +221,7 @@ a:active { // クリックしてから離されるまでの状態
 		margin: 445px 0 50px;
 	}
 	@include smartphone {
-		margin-bottom: percentage(60 / 580);
+		margin-bottom: percentage(54 / 580);
 	}
 	.lead_contents {
 		@extend %ext_base_block;
@@ -278,6 +284,10 @@ a:active { // クリックしてから離されるまでの状態
 			margin: 0 auto 20px;
 			@include backgroundFig(200px, 50px, "step1_ttl.png");
 		}
+		@include smartphone {
+			margin: 0 auto percentage(25 / 580);
+			@include backgroundFigSP(percentage(264 / 580), percentage(66 / 580), "step1_ttl_sp.png");
+		}
 	}
 
 	// ステップエリア共通
@@ -286,6 +296,10 @@ a:active { // クリックしてから離されるまでの状態
 		@include desktop {
 			padding: 10px 0;
 			border: 1px solid #fff;
+		}
+		@include smartphone {
+			margin-bottom: percentage(20 / 580);
+			border: 3px solid #857a26;
 		}
 	}
 	.steps_inner {
@@ -301,6 +315,9 @@ a:active { // クリックしてから離されるまでの状態
 		@include desktop {
 			padding: 16px 0 13px;
 		}
+		@include smartphone {
+			padding: percentage(20 / 580) 0 percentage(18 / 580);
+		}
 	}
 	.steps_desc {
 		text-align: center;
@@ -308,33 +325,65 @@ a:active { // クリックしてから離されるまでの状態
 			font-size: 18px;
 			line-height: 1.66em;
 		}
+		@include smartphone {
+			font-size: 4.0625vw;
+			line-height: 1.69em;
+		}
 	}
 
 	// ステップ1のみのCSS
 	.step1_wrap:after {
 			content: "";
 			display: block;
-			height: 31px;
-			margin-bottom: 14px;
-			background: url(#{$imgPath}steps_next.png) no-repeat 50% 0;
+			background-size: contain;
+			@include desktop {
+				height: 31px;
+				margin-bottom: 14px;
+				background: url(#{$imgPath}steps_next.png) no-repeat 50% 0;
+			}
+			@include smartphone {
+				width: 100%;
+				height: 0;
+				padding-bottom: percentage(36 / 580);;
+				margin-bottom: percentage(19 / 580);
+				background: url(#{$imgPath}steps_next_sp.png) no-repeat 50% 0;
+			}
 	}
 	.step1 {
 		@include desktop {
 			margin-bottom: 18px;
 		}
+		.steps_num {
+			@include smartphone {
+				width: 100%;
+				img {
+					width: percentage(113 / 580);
+					height: auto;
+				}
+			}
+		}
 		.steps_desc {
 			@include desktop {
 				margin: 20px 0;
+			}
+			@include smartphone {
+				margin: percentage(53 / 580) 0 percentage(46 / 580);
 			}
 		}
 		.steps_follow {
 			margin: 0 auto;
 			@include desktop {
+				width: 330px;
 				margin-bottom: 30px;
-				@include backgroundFig(330px, 58px, "steps_follow_btn.png");
 				& > a {
-					display: block;
-					height: 58px;
+					@include backgroundFig(330px, 58px, "steps_follow_btn.png");
+				}
+			}
+			@include smartphone {
+				margin-bottom: percentage(42 / 580);
+				& > a {
+					margin: 0 auto;
+					@include backgroundFigSP(percentage(460 / 574), percentage(80 / 574), "steps_follow_btn_sp.png");
 				}
 			}
 		}
@@ -342,9 +391,24 @@ a:active { // クリックしてから離されるまでの状態
 
 	// ステップ2のみのCSS
 	.step2 {
+		@include smartphone {
+			margin-bottom: percentage(32 / 580);
+		}
+		.steps_num {
+			@include smartphone {
+				width: 100%;
+				img {
+					width: percentage(114 / 580);
+					height: auto;
+				}
+			}
+		}
 		.steps_desc {
 			@include desktop {
 				margin: 40px 0 20px;
+			}
+			@include smartphone {
+				margin: percentage(53 / 580) 0 percentage(30 / 580);
 			}
 		}
 		.steps_tweet {
@@ -355,22 +419,43 @@ a:active { // クリックしてから離されるまでの状態
 			@include desktop {
 				width: 836px;
 			}
+			@include smartphone {
+				width: percentage(510 / 574);
+			}
 			li {
 				@include desktop {
 					margin-bottom: 50px;
 				}
+				@include smartphone {
+					width: 100%;
+				}
 				.steps_tweet_thumb {
 					@include desktop {
 						margin-bottom: 16px;
+					}
+					@include smartphone {
+						width: 100%;
+						margin-bottom: percentage(24 / 510);
+						img {
+							width: 100%;
+							height: auto;
+						}
 					}
 				}
 				.steps_tweet_btn {
 					margin: 0 auto;
 					@include desktop {
 						width: 250px;
+						& > a {
+							@include backgroundFig(250px, 48px, "steps_tweet_btn.png");
+						}
 					}
-					a {
-						display: block;
+					@include smartphone {
+						margin-bottom: percentage(60 / 510);
+						& > a {
+							margin: 0 auto;
+							@include backgroundFigSP(percentage(320 / 510), percentage(86 / 510), "steps_tweet_btn_sp.png");
+						}
 					}
 				}
 				&:nth-child(5),
@@ -385,14 +470,18 @@ a:active { // クリックしてから離されるまでの状態
 
 	// 詳細ボタンのCSS
 	.steps_more_btn {
+		@extend %ext_base_block;
 		margin: 0 auto;
-		a {
-			display: block;
-			height: 128px;
-		}
 		@include desktop {
+			width: 686px;
 			margin-top: 18px;
-			@include backgroundFig(686px, 128px, "steps_more_btn.png");
+			& > a {
+				@include backgroundFig(686px, 128px, "steps_more_btn.png");
+			}
+		}
+		@include smartphone {
+			margin-bottom: percentage(61 / 580);
+			@include backgroundFigSP(percentage(580 / 580), percentage(151 / 580), "steps_more_btn_sp.png");
 		}
 	}
 }
@@ -403,19 +492,34 @@ a:active { // クリックしてから離されるまでの状態
 		width: 880px;
 		margin: 0 auto 65px;
 	}
+	@include smartphone {
+		width: percentage(580 / 640);
+		margin: 0 auto;
+	}
 	.guideline_ttl {
 		@include desktop {
 			margin: 0 auto 30px;
 			@include backgroundFig(200px, 50px, "guideline_ttl.png");
+		}
+		@include smartphone {
+			margin: 0 auto percentage(52 / 580);
+			@include backgroundFigSP(percentage(264 / 580), percentage(66 / 580), "guideline_ttl_sp.png");
 		}
 	}
 	.guideline_contents {
 		@include desktop {
 			line-height: 1.71em;
 		}
+		@include smartphone {
+			font-size: 3.4375vw;
+			line-height: 1.45em;
+		}
 		.guideline_txt {
 			@include desktop {
 				margin-bottom: 26px;
+			}
+			@include smartphone {
+				margin-bottom: percentage(34 / 580);
 			}
 		}
 	}
